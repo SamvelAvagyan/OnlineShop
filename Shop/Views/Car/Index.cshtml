@@ -1,0 +1,23 @@
+﻿@using Shop.Data.Models
+@model IEnumerable<Car>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Index</title>
+</head>
+<body>
+    <h1>Cars</h1>
+
+    @{ 
+        foreach(var car in Model)
+        {
+            <div>
+                <h3>@car.Name</h3>
+                <p>@car.Category.Name</p>
+            </div>
+        }
+    }
+</body>
+</html>
