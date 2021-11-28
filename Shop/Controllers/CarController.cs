@@ -20,8 +20,7 @@ namespace Shop.Controllers
         public async Task<ViewResult> Index()
         {
             ViewBag.Title = "Cars";
-            var cars = await _carRepository.GetAllAsync();
-            return View(cars);
+            return View(await _carRepository.GetAllAsync());
         }
 
         public ActionResult Create()
