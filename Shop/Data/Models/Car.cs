@@ -1,9 +1,7 @@
 ﻿namespace Shop.Data.Models
 {
-    public class Car
+    public class Car : BaseModel
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
         public string ShortDescription { get; set; }
         public string LongDescription { get; set; }
         public ushort Price { get; set; }

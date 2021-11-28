@@ -7,6 +7,5 @@ namespace Shop.Data.Interfaces
     public interface ICarRepository : IBaseRepository<Car>
     {
         Task<IQueryable<Car>> GetFavouriteCarsAsync();
-        Task<Car> GetCarAsync(int id);
     }
 }
