@@ -34,7 +34,7 @@ namespace Shop.Controllers
         public async Task<ActionResult> Create(IFormCollection collection, Category model)
         {
             await _categoryRepository.AddAsync(model);
-            return View();
+            return View("Index");
         }
     }
 }

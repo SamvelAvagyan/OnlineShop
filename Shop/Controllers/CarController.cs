@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Shop.Data.Interfaces;
 using Shop.Data.Models;
 using System.Threading.Tasks;
@@ -23,8 +24,9 @@ namespace Shop.Controllers
             return View(await _carRepository.GetAllAsync());
         }
 
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
+            ViewBag.Categories = new SelectList(await _categoryRepository.GetAllAsync(), "Id", "Name");
             return View();
         }
 
