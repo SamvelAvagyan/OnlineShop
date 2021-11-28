@@ -16,6 +16,7 @@ namespace Shop.Controllers
 
         public ViewResult Index()
         {
+            ViewBag.Title = "Cars";
             var cars = _carRepository.GetAll();
             return View(cars);
         }
