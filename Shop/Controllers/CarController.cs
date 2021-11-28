@@ -1,24 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop.Data.Interfaces;
+using Shop.Data.Models;
+using System.Threading.Tasks;
 
 namespace Shop.Controllers
 {
     public class CarController : Controller
     {
-        private readonly IMockCarRepository _carRepository;
-        private readonly IMockCategoryRepository _categoryRepository;
+        private readonly ICarRepository _carRepository;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public CarController(IMockCarRepository carRepository, IMockCategoryRepository categoryRepository)
+        public CarController(ICarRepository carRepository, ICategoryRepository categoryRepository)
         {
             _carRepository = carRepository;
             _categoryRepository = categoryRepository;
         }
 
-        public ViewResult Index()
+        public async Task<ViewResult> Index()
         {
             ViewBag.Title = "Cars";
-            var cars = _carRepository.GetAll();
+            var cars = await _carRepository.GetAllAsync();
             return View(cars);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
         }
     }
 }

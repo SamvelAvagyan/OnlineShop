@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shop.Data;
+using Shop.Data.Impl;
 using Shop.Data.Interfaces;
 using Shop.Data.Mocks;
 
@@ -23,6 +24,11 @@ namespace Shop
         {
             services.AddDbContext<ShopDBContext>(con => con.UseSqlServer(Configuration.GetConnectionString("Local")));
             services.AddTransient<DbContext, ShopDBContext>();
+            services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            services.AddTransient<ICarRepository, CarRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            services.AddTransient<DbContext, ShopDBContext>();
             services.AddTransient<IMockCarRepository, MockCar>();
             services.AddTransient<IMockCategoryRepository, MockCategory>();
             services.AddMvc();
@@ -40,7 +46,7 @@ namespace Shop
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=car}/{action=Index}/{id?}");
+                    pattern: "{controller=Car}/{action=Index}/{id?}");
             });
             //app.UseEndpoints(endpoints =>
             //{
