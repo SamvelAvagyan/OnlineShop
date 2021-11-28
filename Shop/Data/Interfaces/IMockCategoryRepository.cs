@@ -2,7 +2,7 @@
 
 namespace Shop.Data.Interfaces
 {
-    interface IMockCategoryRepository : IMockBaseRepository<Category>
+    public interface IMockCategoryRepository : IMockBaseRepository<Category>
     {
 
     }

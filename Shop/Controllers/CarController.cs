@@ -5,10 +5,10 @@ namespace Shop.Controllers
 {
     public class CarController : Controller
     {
-        private readonly ICarRepository _carRepository;
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly IMockCarRepository _carRepository;
+        private readonly IMockCategoryRepository _categoryRepository;
 
-        public CarController(ICarRepository carRepository, ICategoryRepository categoryRepository)
+        public CarController(IMockCarRepository carRepository, IMockCategoryRepository categoryRepository)
         {
             _carRepository = carRepository;
             _categoryRepository = categoryRepository;

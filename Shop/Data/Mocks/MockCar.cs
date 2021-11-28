@@ -8,7 +8,7 @@ namespace Shop.Data.Mocks
 {
     public class MockCar : IMockCarRepository
     {
-        private readonly ICategoryRepository _categoryRepository = new MockCategory();
+        private readonly IMockCategoryRepository _categoryRepository = new MockCategory();
 
         public IEnumerable<Car> GetAll()
         {

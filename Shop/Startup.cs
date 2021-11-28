@@ -21,10 +21,10 @@ namespace Shop
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ShopDBContext>(con => con.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ShopDBContext>(con => con.UseSqlServer(Configuration.GetConnectionString("Local")));
             services.AddTransient<DbContext, ShopDBContext>();
-            services.AddTransient<ICarRepository, MockCar>();
-            services.AddTransient<ICategoryRepository, MockCategory>();
+            services.AddTransient<IMockCarRepository, MockCar>();
+            services.AddTransient<IMockCategoryRepository, MockCategory>();
             services.AddMvc();
         }
 
