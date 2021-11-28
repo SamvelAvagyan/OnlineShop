@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Shop.Data.Mocks
 {
-    public class MockCategory : ICategoryRepository
+    public class MockCategory : IMockCategoryRepository
     {
         public IEnumerable<Category> GetAll()
         {

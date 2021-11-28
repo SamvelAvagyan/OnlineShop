@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Shop.Data.Mocks
 {
-    public class MockCar : ICarRepository
+    public class MockCar : IMockCarRepository
     {
         private readonly ICategoryRepository _categoryRepository = new MockCategory();
 
