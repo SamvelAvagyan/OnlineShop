@@ -11,6 +11,19 @@ namespace Shop.Data.Impl
             : base(dbContext)
         { }
 
+        public IQueryable GetAvailables()
+        {
+            return GetAll().Where(t => t.Available);
+        }
+
+        public async Task<IQueryable> GetAvailablesAsync()
+        {
+            return await Task.Run(() =>
+            {
+                return GetAvailables();
+            });
+        }
+
         public async Task<IQueryable<Car>> GetFavouriteCarsAsync()
         {
             return await Task.Run(() =>

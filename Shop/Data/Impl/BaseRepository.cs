@@ -27,7 +27,18 @@ namespace Shop.Data.Impl
             var model = await GetByIdAsync(id);
             if (model == null)
                 throw new ArgumentException("Invalid Id");
-            _dbContext.Set<T>().Remove(model);
+
+            if (model is Car)
+            {
+                Car modelCopy = model as Car;
+                modelCopy.Available = false;
+                await UpdateAsync(modelCopy as T);
+            }
+            else
+            {
+                _dbContext.Set<T>().Remove(model);
+            }
+
             return await _dbContext.SaveChangesAsync() == 1;
         }
 
