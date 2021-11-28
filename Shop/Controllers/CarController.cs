@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Shop.Data.Interfaces;
 using Shop.Data.Models;
 using System.Threading.Tasks;
@@ -25,6 +26,14 @@ namespace Shop.Controllers
 
         public ActionResult Create()
         {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(IFormCollection collection, Car model)
+        {
+            await _carRepository.AddAsync(model);
             return View();
         }
     }
