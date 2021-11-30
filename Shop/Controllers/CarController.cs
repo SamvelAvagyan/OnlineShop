@@ -22,7 +22,7 @@ namespace Shop.Controllers
         public async Task<ViewResult> Index()
         {
             ViewBag.Title = "Cars";
-            return View(await _carRepository.GetAllAsync());
+            return View(await _carRepository.GetAvailablesAsync());
         }
 
         public async Task<ActionResult> Create()
@@ -87,6 +87,11 @@ namespace Shop.Controllers
             {
                 return View();
             }
+        }
+
+        public async Task<ActionResult> Details(int id)
+        {
+            return View(await _carRepository.GetByIdAsync(id));
         }
     }
 }

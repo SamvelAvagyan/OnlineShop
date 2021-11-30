@@ -85,5 +85,10 @@ namespace Shop.Controllers
                 return View();
             }
         }
+
+        public async Task<ActionResult> Details(int id)
+        {
+            return View(await _categoryRepository.GetByIdAsync(id));
+        }
     }
 }
