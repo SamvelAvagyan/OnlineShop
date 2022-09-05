@@ -2,6 +2,6 @@
 
 namespace OnlineShop.Repository
 {
-    public interface IProductRepository : IBaseRepository<Product>
+    public interface ICategoryRepository : IBaseRepository<Category>
     { }
 }

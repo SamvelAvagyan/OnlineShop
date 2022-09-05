@@ -7,5 +7,7 @@ namespace OnlineShop.Repository.Impl
         public ProductRepository(OnlineShopDbContext dbContext) 
             : base(dbContext)
         { }
+
+
     }
 }
