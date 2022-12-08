@@ -21,5 +21,10 @@ namespace OnlineShop.Service.Impl
         {
             return _baseRepository.GetAll();
         }
+
+        public void Update(T model)
+        {
+            _baseRepository.Update(model);
+        }
     }
 }

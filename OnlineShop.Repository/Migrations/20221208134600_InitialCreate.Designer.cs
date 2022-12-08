@@ -10,8 +10,8 @@ using OnlineShop.Repository;
 namespace OnlineShop.Repository.Migrations
 {
     [DbContext(typeof(OnlineShopDbContext))]
-    [Migration("20220905145533_AddCategoryTable")]
-    partial class AddCategoryTable
+    [Migration("20221208134600_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

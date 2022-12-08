@@ -44,5 +44,22 @@ namespace OnlineShop.Api.Controllers
             _productService.AddProduct(productTransfer);
             return Ok(productTransfer);
         }
+
+        [HttpPut]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Update([FromBody] ProductViewModelAdd productView)
+        {
+            ProductViewModelAddValidator validator = new ProductViewModelAddValidator();
+            ValidationResult result = validator.Validate(productView);
+
+            if (!result.IsValid)
+            {
+                return BadRequest(result.Errors);
+            }
+
+            ProductAddTransferModel productTransfer = _mapper.Map<ProductAddTransferModel>(productView);
+            _productService.UpdateProduct(productTransfer);
+            return Ok(productTransfer);
+        }
     }
 }

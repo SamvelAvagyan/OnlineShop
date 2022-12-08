@@ -37,7 +37,7 @@ namespace OnlineShop.Api
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<DbContext, OnlineShopDbContext>();
-            services.AddEntityFrameworkNpgsql().AddDbContext<OnlineShopDbContext>(con => con.UseNpgsql("Host=localhost; Database=OnlineShop; Port=5432; Username=postgres; Password=root1234"));
+            services.AddEntityFrameworkNpgsql().AddDbContext<OnlineShopDbContext>(con => con.UseNpgsql("Host=localhost; Database=OnlineShop; Port=5432; Username=postgres; Password=rootsamo"));
             services.AddAutoMapper(typeof(UserRegisterTransferModelProfile));
             services.AddAutoMapper(typeof(UserLoginTransferModelProfile));
             services.AddAutoMapper(typeof(ProductAddTransferModelProfile));

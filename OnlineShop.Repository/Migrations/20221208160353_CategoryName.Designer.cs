@@ -10,8 +10,8 @@ using OnlineShop.Repository;
 namespace OnlineShop.Repository.Migrations
 {
     [DbContext(typeof(OnlineShopDbContext))]
-    [Migration("20220905141808_AddCategoryModel")]
-    partial class AddCategoryModel
+    [Migration("20221208160353_CategoryName")]
+    partial class CategoryName
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,7 +33,7 @@ namespace OnlineShop.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("OnlineShop.Repository.Models.Order", b =>
@@ -62,6 +62,9 @@ namespace OnlineShop.Repository.Migrations
 
                     b.Property<int?>("CategoryId")
                         .HasColumnType("integer");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("text");
 
                     b.Property<int>("Count")
                         .HasColumnType("integer");
@@ -122,15 +125,13 @@ namespace OnlineShop.Repository.Migrations
 
             modelBuilder.Entity("OnlineShop.Repository.Models.Product", b =>
                 {
-                    b.HasOne("OnlineShop.Repository.Models.Category", "Category")
+                    b.HasOne("OnlineShop.Repository.Models.Category", null)
                         .WithMany("Products")
                         .HasForeignKey("CategoryId");
 
                     b.HasOne("OnlineShop.Repository.Models.Order", null)
                         .WithMany("Products")
                         .HasForeignKey("OrderId");
-
-                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("OnlineShop.Repository.Models.Category", b =>

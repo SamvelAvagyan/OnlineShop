@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OnlineShop.Repository;
@@ -9,9 +10,10 @@ using OnlineShop.Repository;
 namespace OnlineShop.Repository.Migrations
 {
     [DbContext(typeof(OnlineShopDbContext))]
-    partial class OnlineShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221208160152_CategoryId")]
+    partial class CategoryId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,11 +60,8 @@ namespace OnlineShop.Repository.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("integer");
-
-                    b.Property<string>("CategoryName")
-                        .HasColumnType("text");
 
                     b.Property<int>("Count")
                         .HasColumnType("integer");
@@ -125,7 +124,9 @@ namespace OnlineShop.Repository.Migrations
                 {
                     b.HasOne("OnlineShop.Repository.Models.Category", null)
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("OnlineShop.Repository.Models.Order", null)
                         .WithMany("Products")

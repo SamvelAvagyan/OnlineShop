@@ -22,5 +22,11 @@ namespace OnlineShop.Repository.Impl
         {
             return _dbContext.Set<T>();
         }
+
+        public void Update(T model)
+        {
+            _dbContext.Set<T>().Update(model);
+            _dbContext.SaveChanges();
+        }
     }
 }

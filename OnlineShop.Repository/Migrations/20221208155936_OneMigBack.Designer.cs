@@ -10,8 +10,8 @@ using OnlineShop.Repository;
 namespace OnlineShop.Repository.Migrations
 {
     [DbContext(typeof(OnlineShopDbContext))]
-    [Migration("20220828110644_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20221208155936_OneMigBack")]
+    partial class OneMigBack
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,21 @@ namespace OnlineShop.Repository.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+            modelBuilder.Entity("OnlineShop.Repository.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
 
             modelBuilder.Entity("OnlineShop.Repository.Models.Order", b =>
                 {
@@ -45,7 +60,7 @@ namespace OnlineShop.Repository.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("Category")
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("integer");
 
                     b.Property<int>("Count")
@@ -58,6 +73,8 @@ namespace OnlineShop.Repository.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("OrderId");
 
@@ -105,9 +122,20 @@ namespace OnlineShop.Repository.Migrations
 
             modelBuilder.Entity("OnlineShop.Repository.Models.Product", b =>
                 {
+                    b.HasOne("OnlineShop.Repository.Models.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId");
+
                     b.HasOne("OnlineShop.Repository.Models.Order", null)
                         .WithMany("Products")
                         .HasForeignKey("OrderId");
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("OnlineShop.Repository.Models.Category", b =>
+                {
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("OnlineShop.Repository.Models.Order", b =>

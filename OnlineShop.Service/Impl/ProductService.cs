@@ -20,5 +20,11 @@ namespace OnlineShop.Service.Impl
             Product product = _mapper.Map<Product>(productTransfer);
             base.Add(product);
         }
+
+        public void UpdateProduct(ProductAddTransferModel productTransfer)
+        {
+            Product product = _mapper.Map<Product>(productTransfer);
+            base.Update(product);
+        }
     }
 }

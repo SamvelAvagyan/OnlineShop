@@ -6,5 +6,6 @@ namespace OnlineShop.Service
     {
         IQueryable<T> GetAll();
         void Add(T model);
+        void Update(T model);
     }
 }
