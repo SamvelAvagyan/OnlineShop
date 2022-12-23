@@ -2,9 +2,8 @@
 
 namespace OnlineShop.Repository.Models
 {
-    public class Category
-    {
-        public int Id { get; set; }
+    public class Category : BaseModel
+    { 
         public string Name { get; set; }
         public List<Product> Products { get; set; }
     }

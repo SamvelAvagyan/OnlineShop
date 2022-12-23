@@ -2,6 +2,7 @@
 using OnlineShop.Repository;
 using OnlineShop.Repository.Models;
 using OnlineShop.Service.DataTransferModels;
+using System.Linq;
 
 namespace OnlineShop.Service.Impl
 {
@@ -19,6 +20,11 @@ namespace OnlineShop.Service.Impl
         {
             Product product = _mapper.Map<Product>(productTransfer);
             base.Add(product);
+        }
+
+        public Product GetByName(string name)
+        {
+            return base.GetAll().FirstOrDefault(product => product.Name == name);
         }
 
         public void UpdateProduct(ProductAddTransferModel productTransfer)

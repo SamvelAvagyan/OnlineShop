@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace OnlineShop.Repository.Models
 {
-    public class Order
+    public class Order : BaseModel
     {
-        public int Id { get; set; }
-        public User User { get; set; }
-        public List<Product> Products { get; set; }
+        public User? User { get; set; }
+        public List<ProductOrder> Products { get; set; }
+        public string Address { get; set; }
+        public bool IsCashless { get; set; }
+        public DateTime Date { get; set; }
     }
 }

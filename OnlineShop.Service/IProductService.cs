@@ -7,5 +7,6 @@ namespace OnlineShop.Service
     {
         void AddProduct(ProductAddTransferModel productTransfer);
         void UpdateProduct(ProductAddTransferModel productTransfer);
+        Product GetByName(string name);
     }
 }
