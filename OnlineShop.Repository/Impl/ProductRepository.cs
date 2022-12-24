@@ -4,10 +4,12 @@ namespace OnlineShop.Repository.Impl
 {
     public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
-        public ProductRepository(OnlineShopDbContext dbContext) 
-            : base(dbContext)
+        //public ProductRepository(OnlineShopDbContext dbContext) 
+        //    : base(dbContext)
+        //{ }
+
+        public ProductRepository()
+            : base("product.json")
         { }
-
-
     }
 }

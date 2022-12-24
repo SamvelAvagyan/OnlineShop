@@ -4,8 +4,12 @@ namespace OnlineShop.Repository.Impl
 {
     public class OrderRepository : BaseRepository<Order>
     {
-        public OrderRepository(OnlineShopDbContext dbContext)
-           : base(dbContext)
+        //public OrderRepository(OnlineShopDbContext dbContext)
+        //   : base(dbContext)
+        //{ }
+
+        public OrderRepository()
+            : base("order.json")
         { }
     }
 }

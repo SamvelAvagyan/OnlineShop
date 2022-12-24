@@ -41,7 +41,7 @@ namespace OnlineShop.Api.Controllers
 
         // POST api/<OrderController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Add([FromBody] string va)
         {
         }
     }
